@@ -4,7 +4,7 @@ class BeerbolagetCard extends HTMLElement {
       const card = document.createElement('ha-card');
       card.header = 'Beerbolaget';
       this.content = document.createElement('div');
-      this.content.className = "CardDiv";
+      this.content.className = 'CardDiv';
       this.content.style.padding = '0 16px 16px';
       card.appendChild(this.content);
       this.appendChild(card);
@@ -15,42 +15,40 @@ class BeerbolagetCard extends HTMLElement {
       const stateStr = state ? state.state : 'unavailable';
 
       var beerList = document.createElement('ul');
-      beerList.className = "beer-list";
+      beerList.className = 'beer-list';
 
       for(var x in json){
         var liElement = document.createElement('li');
-        liElement.className = "li-element";
+        liElement.className = 'li-element';
         var divBeer = document.createElement('div');
-        divBeer.className = "beer-item";
+        divBeer.className = 'beer-item';
 
         // Beer image container
         var divBeerImage = document.createElement('div');
-        divBeerImage.className = "beer-image";
-        var image = json[x]['image'] === "" ? "https://via.placeholder.com/90x180" : json[x]['image'];
+        divBeerImage.className = 'beer-image';
+        var image = json[x]['image'] === '' ? 'https://via.placeholder.com/90x180' : json[x]['image'];
         var imageNode = document.createElement('IMG');
         imageNode.src = image;
         divBeerImage.appendChild(imageNode);
 
         // Beer info container
         var divBeerInfo = document.createElement('div');
-        divBeerInfo.className = "beer-info-container";
+        divBeerInfo.className = 'beer-info-container';
         var beerInfo = document.createElement('ul');
-        beerInfo.className = "beer-info"
+        beerInfo.className = 'beer-info';
+
         // Beer info - bewery
-        var beerInfoBrewery = document.createElement('li');
-        var brewery = document.createTextNode(json[x]['brewery']);
-        brewery.className = "brewery";
-        beerInfoBrewery.appendChild(brewery);
+        var brewery = getBrewery(json[x]['brewery']);
+
         // Beer info - name
-        var beerInfoName = document.createElement('li');
-        var beerName = document.createTextNode(get_beer_name(json[x]['brewery'],
-                                                             json[x]['name'],
-                                                             json[x]['detailed_name']));
-        beerName.className = "beer-name";
-        beerInfoName.appendChild(beerName);
+        var beerName = getBeerName(json[x]['brewery'],
+                                   json[x]['name'],
+                                   json[x]['detailed_name']);
+
+
         // Collect beer info
-        beerInfo.appendChild(beerInfoBrewery);
-        beerInfo.appendChild(beerInfoName);
+        beerInfo.appendChild(brewery);
+        beerInfo.appendChild(beerName);
         divBeerInfo.appendChild(beerInfo);
 
         // Append image and info container to beer container.
@@ -95,17 +93,30 @@ class BeerbolagetCard extends HTMLElement {
       this.content.appendChild(beerList);
     }
 
-    function get_beer_name(brewery, name, detailed_name) {
-        var beer_name = name;
-        var brewery_check = brewery.toLowerCase().split(" ")[0];
-        if (brewery_check === 'the') {
-            brewery_check = brewery.toLowerCase().split(" ")[1];
+    function getBrewery(brewery) {
+        var beerInfoBrewery = document.createElement('li');
+        var infoBrewery = document.createTextNode(brewery);
+        infoBrewery.className = 'brewery';
+        beerInfoBrewery.appendChild(infoBrewery);
+        return beerInfoBrewery;
+    }
+
+    function getBeerName(brewery, name, detailedName) {
+        var beerInfoNameComponent = document.createElement('li');
+
+        var beerName = name;
+        var breweryCheck = brewery.toLowerCase().split(' ')[0];
+        if (breweryCheck === 'the') {
+            breweryCheck = brewery.toLowerCase().split(' ')[1];
         }
-        if (detailed_name && name.toLowerCase().includes(brewery_check) &&
-            !detailed_name.toLowerCase().includes(brewery_check)) {
-            beer_name = detailed_name;
+        if (detailedName && name.toLowerCase().includes(breweryCheck) &&
+            !detailedName.toLowerCase().includes(breweryCheck)) {
+            beerName = detailedName;
         }
-        return beer_name;
+        var infoName = document.createTextNode(beerName);
+        infoName.className = 'beer-name';
+        beerInfoNameComponent.appendChild(infoName);
+        return beerInfoNameComponent;
     }
   }
 
