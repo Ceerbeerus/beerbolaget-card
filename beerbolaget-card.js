@@ -4,8 +4,8 @@ class BeerbolagetCard extends HTMLElement {
             const card = document.createElement('ha-card');
             card.header = 'Beerbolaget';
             this.content = document.createElement('div');
-            this.content.className = 'CardDiv';
-            this.content.style.padding = '0 16px 16px';
+            this.content.className = 'card-div';
+            this.content.style.padding = '0 10px 10px';
             card.appendChild(this.content);
             this.appendChild(card);
 
@@ -72,9 +72,13 @@ class BeerbolagetCard extends HTMLElement {
             var style = document.createElement('style');
 
             style.textContent = `
+                .card-div {
+                    margin-top: 0px;
+                }
                 .beer-list {
-                    list-style-type:none;
-                    padding-left:0px;
+                    list-style-type: none;
+                    margin: 0px;
+                    padding-left: 0px;
                 }
                 .li-element {
                     list-style-position:inside;
@@ -87,7 +91,7 @@ class BeerbolagetCard extends HTMLElement {
                     padding: 0px;
                 }
                 .beer-info li {
-                    padding: 3px 0px 3px 20px;
+                    padding: 3px 12px 3px 12px;
                 }
                 .beer-info-container {
                     overflow: auto;
@@ -98,16 +102,19 @@ class BeerbolagetCard extends HTMLElement {
                 }
                 .beer-image {
                     float: left;
-                    box-shadow: 8px 0 6px -6px black;
+                    border-top: 3px solid black;
+                    border-right: 3px solid black;
+                    border-bottom: 3px solid black;
+                    box-shadow: 8px 0 8px -6px black;
                 }
                 .beer-image img {
-                    display: block;
-                    padding: 0px;
+                  display: block;
+                  padding: 0px;
                 }
                 .beer-name {
-                    font-weight: bold;
-                    font-size: 21px;
-                    background-color:#008528;
+                  font-weight: bold;
+                  font-size: 21px;
+                  background-color:#008528;
                 }
                 .brewery{
                   font-size:19px;
