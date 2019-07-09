@@ -95,7 +95,7 @@ class BeerbolagetCard extends HTMLElement {
                     border-top: 3px solid black;
                     border-right: 3px solid black;
                     border-bottom: 3px solid black;
-                    box-shadow: 10px 0 8px -6px black;
+                    box-shadow: 8px 0 8px -6px black;
                 }
                 .beer-image img {
                     display: block;
