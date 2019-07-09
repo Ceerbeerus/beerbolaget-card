@@ -1,4 +1,11 @@
-class BeerbolagetCard extends HTMLElement {
+﻿class BeerbolagetCard extends HTMLElement {
+    setConfig(config) {
+        if (!config.entity) {
+            throw new Error('You need to define an entity');
+        }
+        this.config = config;
+    }
+
     set hass(hass) {
         if (!this.content) {
             const card = document.createElement('ha-card');
@@ -11,62 +18,86 @@ class BeerbolagetCard extends HTMLElement {
 
             const entityId = this.config.entity;
             const state = hass.states[entityId];
+            const show_rating = this.config.rating;
+            const filter_local = this.config.filter_local;
             const json = JSON.parse(state.attributes.beverages);
             const stateStr = state ? state.state : 'unavailable';
+
+            // Release Info
+            var releaseInfo = document.createElement('p');
+            releaseInfo.className = 'release';
+            var release = document.createTextNode('Små partier: ' + stateStr);
+            releaseInfo.appendChild(release);
+            this.content.appendChild(releaseInfo);
 
             var beerList = document.createElement('ul');
             beerList.className = 'beer-list';
 
-            for(var x in json){
-                var liElement = document.createElement('li');
-                liElement.className = 'li-element';
-                var divBeer = document.createElement('div');
-                divBeer.className = 'beer-item';
+            for (var x in json) {
+                if (!filter_local || (filter_local && json[x]['availability_local'])) {
+                    var liElement = document.createElement('li');
+                    liElement.className = 'li-element';
+                    var divBeer = document.createElement('div');
+                    divBeer.className = 'beer-item';
 
-                // Beer image container
-                var divBeerImage = document.createElement('div');
-                divBeerImage.className = 'beer-image';
-                var image = json[x]['image'] === '' ? 'https://via.placeholder.com/90x180' : json[x]['image'];
-                var imageNode = document.createElement('IMG');
-                imageNode.src = image;
-                divBeerImage.appendChild(imageNode);
+                    // Beer image container
+                    var divBeerImage = document.createElement('div');
+                    divBeerImage.className = 'beer-image';
+                    var image = json[x]['image'] === '' ? 'https://via.placeholder.com/90x180' : json[x]['image'];
+                    var imageNode = document.createElement('IMG');
+                    imageNode.src = image;
+                    divBeerImage.appendChild(imageNode);
 
-                // Beer info container
-                var divBeerInfo = document.createElement('div');
-                divBeerInfo.className = 'beer-info-container';
-                var beerInfo = document.createElement('ul');
-                beerInfo.className = 'beer-info';
+                    // Beer info container
+                    var divBeerInfo = document.createElement('div');
+                    divBeerInfo.className = 'beer-info-container';
+                    var beerInfo = document.createElement('ul');
+                    beerInfo.className = 'beer-info';
 
-                // Beer info - bewery
-                var brewery = getBrewery(json[x]['brewery']);
+                    // Beer info - bewery
+                    var brewery = getBrewery(json[x]['brewery']);
 
-                // Beer info - name
-                var beerName = getBeerName(json[x]['brewery'],
-                                           json[x]['name'],
-                                           json[x]['detailed_name']);
+                    // Beer info - name
+                    var beerName = getBeerName(json[x]['brewery'],
+                        json[x]['name'],
+                        json[x]['detailed_name']);
 
-                // Beer Info - Country
-                var beerCountry = getBeerCountry(json[x]['country']);
+                    // Beer Info - Country
+                    var beerCountry = getBeerCountry(json[x]['country']);
 
-                // Beer Info - Type
-                var beerType = getBeerType(json[x]['type']);
+                    // Beer Info - Type
+                    var beerType = getBeerType(json[x]['type']);
 
-                // Beer Info - Price
-                var beerPrice = getBeerPrice(json[x]['price']);
+                    // Beer Info - Price
+                    var beerPrice = getBeerPrice(json[x]['price']);
 
-                // Collect beer info
-                beerInfo.appendChild(beerName);
-                beerInfo.appendChild(brewery);
-                beerInfo.appendChild(beerCountry);
-                beerInfo.appendChild(beerType);
-                beerInfo.appendChild(beerPrice);
-                divBeerInfo.appendChild(beerInfo);
+                    // Collect Beer Info
+                    beerInfo.appendChild(beerName);
+                    beerInfo.appendChild(brewery);
+                    beerInfo.appendChild(beerCountry);
+                    beerInfo.appendChild(beerType);
+                    beerInfo.appendChild(beerPrice);
 
-                // Append image and info container to beer container.
-                divBeer.appendChild(divBeerImage);
-                divBeer.appendChild(divBeerInfo);
-                liElement.appendChild(divBeer);
-                beerList.appendChild(liElement);
+                    // Beer Info  - Availability
+                    if (!filter_local && json[x]['show_availability']) {
+                        var beerAvailable = getBeerAvailable(json[x]['availability_local']);
+                        beerInfo.appendChild(beerAvailable);
+                    }
+
+                    // Beer Info - Rating
+                    if (show_rating && json[x]['untappd_rating']) {
+                        var beerRating = getBeerRating(json[x]['untappd_rating']);
+                        beerInfo.appendChild(beerRating);
+                    }
+
+                    divBeerInfo.appendChild(beerInfo);
+
+                    // Append image and info container to beer container.
+                    divBeer.appendChild(divBeerImage);
+                    divBeer.appendChild(divBeerInfo);
+                    liElement.appendChild(divBeer);
+                    beerList.appendChild(liElement);
+                }
             }
 
             var style = document.createElement('style');
@@ -89,7 +120,7 @@ class BeerbolagetCard extends HTMLElement {
                     padding: 0px;
                 }
                 .beer-info li {
-                    padding: 3px 12px 3px 12px;
+                    padding: 2px 12px 2px 12px;
                 }
                 .beer-info-container {
                     overflow: auto;
@@ -106,6 +137,8 @@ class BeerbolagetCard extends HTMLElement {
                     border-right: 3px solid black;
                     border-bottom: 3px solid black;
                     box-shadow: 8px 0 8px -6px black;
+                    -moz-box-shadow: 8px 0 8px -6px black;
+                    -webkit-box-shadow: 8px 0 8px -6px black;
                 }
                 .beer-image img {
                     display: block;
@@ -119,11 +152,16 @@ class BeerbolagetCard extends HTMLElement {
                 .brewery {
                     font-size: 15px;
                     border-bottom: 1px solid gray;
-                    margin-top: 8px;
-                    margin-bottom: 8px;
+                    margin-top: 5px;
+                    margin-bottom: 4px;
                 }
-                .country, .type, .price {
+                .country, .type, .price, .available, .rating {
                     font-size: 13px;
+                }
+                .release {
+                    margin-top: -15px;
+                    margin-bottom: 0px;
+                    padding: 0px 0px 15px 8px;
                 }
 
             `;
@@ -158,36 +196,46 @@ class BeerbolagetCard extends HTMLElement {
             return beerInfoNameComponent;
         }
 
-        function getBeerCountry(country){
-          var beerInfoCountry = document.createElement('li');
-          var beerCountry = document.createTextNode('Land - ' + country);
-          beerInfoCountry.className = 'country';
-          beerInfoCountry.appendChild(beerCountry);
-          return beerInfoCountry;
+        function getBeerCountry(country) {
+            var beerInfoCountry = document.createElement('li');
+            var beerCountry = document.createTextNode('Land - ' + country);
+            beerInfoCountry.className = 'country';
+            beerInfoCountry.appendChild(beerCountry);
+            return beerInfoCountry;
         }
 
-        function getBeerType(type){
-          var beerInfoType = document.createElement('li');
-          var beerType = document.createTextNode('Typ - ' + type);
-          beerInfoType.className = 'type';
-          beerInfoType.appendChild(beerType);
-          return beerInfoType;
+        function getBeerType(type) {
+            var beerInfoType = document.createElement('li');
+            var beerType = document.createTextNode('Typ - ' + type);
+            beerInfoType.className = 'type';
+            beerInfoType.appendChild(beerType);
+            return beerInfoType;
         }
 
-        function getBeerPrice(price){
-          var beerInfoPrice = document.createElement('li');
-          var beerPrice = document.createTextNode('Pris - ' + price + ' Kr');
-          beerInfoPrice.className = 'price';
-          beerInfoPrice.appendChild(beerPrice);
-          return beerInfoPrice;
+        function getBeerPrice(price) {
+            var beerInfoPrice = document.createElement('li');
+            var beerPrice = document.createTextNode('Pris - ' + price + ' Kr');
+            beerInfoPrice.className = 'price';
+            beerInfoPrice.appendChild(beerPrice);
+            return beerInfoPrice;
         }
-    }
 
-    setConfig(config) {
-        if (!config.entity) {
-            throw new Error('You need to define an entity');
+        function getBeerAvailable(available) {
+            var beerInfoAvailable = document.createElement('li');
+            var isAvailable = !available ? 'Ej tillgänglig' : 'Tillgänglig';
+            var beerAvailable = document.createTextNode('Lokal butik - ' + isAvailable);
+            beerInfoAvailable.className = 'available';
+            beerInfoAvailable.appendChild(beerAvailable);
+            return beerInfoAvailable;
         }
-        this.config = config;
+
+        function getBeerRating(rating) {
+            var beerInfoRating = document.createElement('li');
+            var beerRating = document.createTextNode('Untappd - ' + rating);
+            beerInfoRating.className = 'rating';
+            beerInfoRating.appendChild(beerRating);
+            return beerInfoRating;
+        }
     }
 
     // The height of your card. Home Assistant uses this to automatically
