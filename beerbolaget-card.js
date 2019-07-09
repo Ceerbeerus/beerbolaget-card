@@ -45,12 +45,12 @@ class BeerbolagetCard extends HTMLElement {
                                            json[x]['name'],
                                            json[x]['detailed_name']);
 
-
-
                 // Beer Info - Country
                 var beerCountry = getBeerCountry(json[x]['country']);
+
                 // Beer Info - Type
                 var beerType = getBeerType(json[x]['type']);
+
                 // Beer Info - Price
                 var beerPrice = getBeerPrice(json[x]['price']);
 
@@ -81,13 +81,11 @@ class BeerbolagetCard extends HTMLElement {
                     padding-left: 0px;
                 }
                 .li-element {
-                    list-style-position:inside;
-                    border-bottom: 1px solid black;
-                    padding-top:35px;
-                    padding-bottom:35px;
+                    list-style-position: inside;
+                    padding-bottom: 20px;
                 }
                 .beer-info {
-                    list-style-type:none;
+                    list-style-type: none;
                     padding: 0px;
                 }
                 .beer-info li {
@@ -95,6 +93,8 @@ class BeerbolagetCard extends HTMLElement {
                 }
                 .beer-info-container {
                     overflow: auto;
+                    padding-left: 0px;
+                    padding-top: 10px;
                 }
                 .beer-item {
                     clear: both;
@@ -108,22 +108,22 @@ class BeerbolagetCard extends HTMLElement {
                     box-shadow: 8px 0 8px -6px black;
                 }
                 .beer-image img {
-                  display: block;
-                  padding: 0px;
+                    display: block;
+                    padding: 0px;
                 }
                 .beer-name {
-                  font-weight: bold;
-                  font-size: 21px;
-                  background-color:#008528;
+                    font-weight: bold;
+                    font-size: 19px;
+                    background-color:#008528;
                 }
-                .brewery{
-                  font-size:19px;
-                  border-bottom: 1px solid gray;
-                  margin-bottom:20px;
+                .brewery {
+                    font-size: 15px;
+                    border-bottom: 1px solid gray;
+                    margin-top: 8px;
+                    margin-bottom: 8px;
                 }
-                p{
-                  margin:0px;
-                  font-size:15px;
+                .country, .type, .price {
+                    font-size: 13px;
                 }
 
             `;
@@ -134,17 +134,14 @@ class BeerbolagetCard extends HTMLElement {
 
         function getBrewery(brewery) {
             var beerInfoBrewery = document.createElement('li');
-            var beerParaBrewery = document.createElement('p');
             var infoBrewery = document.createTextNode(brewery);
-            beerParaBrewery.className = 'brewery';
-            beerInfoBrewery.appendChild(beerParaBrewery);
-            beerParaBrewery.appendChild(infoBrewery);
+            beerInfoBrewery.className = 'brewery';
+            beerInfoBrewery.appendChild(infoBrewery);
             return beerInfoBrewery;
         }
 
         function getBeerName(brewery, name, detailedName) {
             var beerInfoNameComponent = document.createElement('li');
-            var beerParaName = document.createElement('p');
 
             var beerName = name;
             var breweryCheck = brewery.toLowerCase().split(' ')[0];
@@ -156,39 +153,32 @@ class BeerbolagetCard extends HTMLElement {
                 beerName = detailedName;
             }
             var infoName = document.createTextNode(beerName);
-            beerParaName.className = 'beer-name';
-            beerInfoNameComponent.appendChild(beerParaName);
-            beerParaName.appendChild(infoName);
+            beerInfoNameComponent.className = 'beer-name';
+            beerInfoNameComponent.appendChild(infoName);
             return beerInfoNameComponent;
         }
 
         function getBeerCountry(country){
           var beerInfoCountry = document.createElement('li');
-          var beerParaCountry = document.createElement('p');
           var beerCountry = document.createTextNode('Land - ' + country);
-          beerParaCountry.className = 'country';
-          beerInfoCountry.appendChild(beerParaCountry);
-          beerParaCountry.appendChild(beerCountry);
+          beerInfoCountry.className = 'country';
+          beerInfoCountry.appendChild(beerCountry);
           return beerInfoCountry;
         }
 
         function getBeerType(type){
           var beerInfoType = document.createElement('li');
-          var beerParaType = document.createElement('p');
           var beerType = document.createTextNode('Typ - ' + type);
-          beerParaType.className = 'country';
-          beerInfoType.appendChild(beerParaType);
-          beerParaType.appendChild(beerType);
+          beerInfoType.className = 'type';
+          beerInfoType.appendChild(beerType);
           return beerInfoType;
         }
 
         function getBeerPrice(price){
           var beerInfoPrice = document.createElement('li');
-          var beerParaPrice = document.createElement('p');
           var beerPrice = document.createTextNode('Pris - ' + price + ' Kr');
-          beerParaPrice.className = 'price';
-          beerInfoPrice.appendChild(beerParaPrice);
-          beerParaPrice.appendChild(beerPrice);
+          beerInfoPrice.className = 'price';
+          beerInfoPrice.appendChild(beerPrice);
           return beerInfoPrice;
         }
     }
