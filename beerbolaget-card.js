@@ -45,9 +45,21 @@ class BeerbolagetCard extends HTMLElement {
                                            json[x]['name'],
                                            json[x]['detailed_name']);
 
+
+
+                // Beer Info - Country
+                var beerCountry = getBeerCountry(json[x]['country']);
+                // Beer Info - Type
+                var beerType = getBeerType(json[x]['type']);
+                // Beer Info - Price
+                var beerPrice = getBeerPrice(json[x]['price']);
+
                 // Collect beer info
                 beerInfo.appendChild(beerName);
                 beerInfo.appendChild(brewery);
+                beerInfo.appendChild(beerCountry);
+                beerInfo.appendChild(beerType);
+                beerInfo.appendChild(beerPrice);
                 divBeerInfo.appendChild(beerInfo);
 
                 // Append image and info container to beer container.
@@ -65,7 +77,6 @@ class BeerbolagetCard extends HTMLElement {
                     padding-left:0px;
                 }
                 .li-element {
-                    font-size:17px;
                     list-style-position:inside;
                     border-bottom: 1px solid black;
                     padding-top:35px;
@@ -80,8 +91,6 @@ class BeerbolagetCard extends HTMLElement {
                 }
                 .beer-info-container {
                     overflow: auto;
-                    padding-left: 0px;
-                    padding-top: 20px;
                 }
                 .beer-item {
                     clear: both;
@@ -96,10 +105,20 @@ class BeerbolagetCard extends HTMLElement {
                     padding: 0px;
                 }
                 .beer-name {
-                    font-weight: 900;
-                    font-size: 18px;
-                    background-color: #008528;
+                    font-weight: bold;
+                    font-size: 21px;
+                    background-color:#008528;
                 }
+                .brewery{
+                  font-size:19px;
+                  border-bottom: 1px solid gray;
+                  margin-bottom:20px;
+                }
+                p{
+                  margin:0px;
+                  font-size:15px;
+                }
+
             `;
 
             card.appendChild(style);
@@ -108,15 +127,17 @@ class BeerbolagetCard extends HTMLElement {
 
         function getBrewery(brewery) {
             var beerInfoBrewery = document.createElement('li');
+            var beerParaBrewery = document.createElement('p');
             var infoBrewery = document.createTextNode(brewery);
-            infoBrewery.className = 'brewery';
-            beerInfoBrewery.appendChild(infoBrewery);
+            beerParaBrewery.className = 'brewery';
+            beerInfoBrewery.appendChild(beerParaBrewery);
+            beerParaBrewery.appendChild(infoBrewery);
             return beerInfoBrewery;
         }
 
         function getBeerName(brewery, name, detailedName) {
             var beerInfoNameComponent = document.createElement('li');
-            beerInfoNameComponent.className = 'beer-name'
+            var beerParaName = document.createElement('p');
 
             var beerName = name;
             var breweryCheck = brewery.toLowerCase().split(' ')[0];
@@ -128,8 +149,40 @@ class BeerbolagetCard extends HTMLElement {
                 beerName = detailedName;
             }
             var infoName = document.createTextNode(beerName);
-            beerInfoNameComponent.appendChild(infoName);
+            beerParaName.className = 'beer-name';
+            beerInfoNameComponent.appendChild(beerParaName);
+            beerParaName.appendChild(infoName);
             return beerInfoNameComponent;
+        }
+
+        function getBeerCountry(country){
+          var beerInfoCountry = document.createElement('li');
+          var beerParaCountry = document.createElement('p');
+          var beerCountry = document.createTextNode('Land - ' + country);
+          beerParaCountry.className = 'country';
+          beerInfoCountry.appendChild(beerParaCountry);
+          beerParaCountry.appendChild(beerCountry);
+          return beerInfoCountry;
+        }
+
+        function getBeerType(type){
+          var beerInfoType = document.createElement('li');
+          var beerParaType = document.createElement('p');
+          var beerType = document.createTextNode('Typ - ' + type);
+          beerParaType.className = 'country';
+          beerInfoType.appendChild(beerParaType);
+          beerParaType.appendChild(beerType);
+          return beerInfoType;
+        }
+
+        function getBeerPrice(price){
+          var beerInfoPrice = document.createElement('li');
+          var beerParaPrice = document.createElement('p');
+          var beerPrice = document.createTextNode('Pris - ' + price + ' Kr');
+          beerParaPrice.className = 'price';
+          beerInfoPrice.appendChild(beerParaPrice);
+          beerParaPrice.appendChild(beerPrice);
+          return beerInfoPrice;
         }
     }
 
