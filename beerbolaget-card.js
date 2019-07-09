@@ -11,7 +11,7 @@ class BeerbolagetCard extends HTMLElement {
 
       const entityId = this.config.entity;
       const state = hass.states[entityId];
-      const json = JSON.parse(hass.states[entityId].attributes.beverages);
+      const json = JSON.parse(state.attributes.beverages);
       const stateStr = state ? state.state : 'unavailable';
 
       var beerList = document.createElement('ul');
@@ -26,7 +26,7 @@ class BeerbolagetCard extends HTMLElement {
         // Beer image container
         var divBeerImage = document.createElement('div');
         divBeerImage.className = "beer-image";
-        var image = json[x]['image'] === "" ? "https://via.placeholder.com/100x180" : json[x]['image'];
+        var image = json[x]['image'] === "" ? "https://via.placeholder.com/90x180" : json[x]['image'];
         var imageNode = document.createElement('IMG');
         imageNode.src = image;
         divBeerImage.appendChild(imageNode);
@@ -43,7 +43,9 @@ class BeerbolagetCard extends HTMLElement {
         beerInfoBrewery.appendChild(brewery);
         // Beer info - name
         var beerInfoName = document.createElement('li');
-        var beerName = document.createTextNode(json[x]['name']);
+        var beerName = document.createTextNode(get_beer_name(json[x]['brewery'],
+                                                             json[x]['name'],
+                                                             json[x]['detailed_name']));
         beerName.className = "beer-name";
         beerInfoName.appendChild(beerName);
         // Collect beer info
@@ -91,6 +93,19 @@ class BeerbolagetCard extends HTMLElement {
 
       card.appendChild(style);
       this.content.appendChild(beerList);
+    }
+
+    function get_beer_name(brewery, name, detailed_name) {
+        var beer_name = name;
+        var brewery_check = brewery.toLowerCase().split(" ")[0];
+        if (brewery_check === 'the') {
+            brewery_check = brewery.toLowerCase().split(" ")[1];
+        }
+        if (detailed_name && name.toLowerCase().includes(brewery_check) &&
+            !detailed_name.toLowerCase().includes(brewery_check)) {
+            beer_name = detailed_name;
+        }
+        return beer_name;
     }
   }
 
