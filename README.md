@@ -1,4 +1,5 @@
 # Beerbolaget-card
+A custom card to display the information provided by [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget).
 
 ## Setup
 This card is available for integration in two ways, which is described below.
@@ -25,8 +26,8 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
 |Name                |Default       |Supported options                                 |Description                                                                                                                                                                                                                                                                                                                                    |
 | --------------     | ------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |`entity`            |`None`        |`String`                                          |Required entity of Beerbolaget sensor.
-|`rating`            |`False`       |`False | True`                                    |Display ratings from Untappd. This required to also have this option added in the setup of Beerbolaget component.
-|`filter_local`      |`False`       |`False | True`                                    |Filter beers not available at the local store. A store must be added as option in the setup of Beerbolaget component.
+|`rating`            |`false`       |`false \| true`                                   |Display ratings from Untappd. This required to also have this option added in the setup of Beerbolaget component.
+|`filter_local`      |`false`       |`false \| true`                                   |Filter beers not available at the local store. A store must be added as option in the setup of Beerbolaget component.
 
 ## Example
   ```yaml
