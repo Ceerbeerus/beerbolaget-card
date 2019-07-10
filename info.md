@@ -1,3 +1,5 @@
+<img src="./layout.png" width="300" height="562"/>
+
 # Integration
 Install the card in HACS and add the following to your ui-lovelace.yaml
 ```yaml
