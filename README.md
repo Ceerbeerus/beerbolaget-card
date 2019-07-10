@@ -1,5 +1,5 @@
 # Beerbolaget-card
-A custom card to display the information provided by [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget).
+A custom card for displaying information provided by [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget).
 
 ## Setup
 This card is available for integration in two ways, which is described below.
