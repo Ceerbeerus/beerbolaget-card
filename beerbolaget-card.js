@@ -163,6 +163,9 @@
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                 }
+                .spanText{
+                  font-weight:bold;
+                }
 
             `;
 
@@ -198,43 +201,43 @@
 
         function getBeerCountry(country) {
             var beerInfoCountry = document.createElement('li');
-            var beerCountry = document.createTextNode('Land - ' + country);
+            beerInfoCountry.innerHTML = getSpanText("Land" , country);
             beerInfoCountry.className = 'country';
-            beerInfoCountry.appendChild(beerCountry);
             return beerInfoCountry;
         }
 
         function getBeerType(type) {
             var beerInfoType = document.createElement('li');
-            var beerType = document.createTextNode('Typ - ' + type);
+            beerInfoType.innerHTML = getSpanText("Typ" , type);
             beerInfoType.className = 'type';
-            beerInfoType.appendChild(beerType);
             return beerInfoType;
         }
 
         function getBeerPrice(price) {
             var beerInfoPrice = document.createElement('li');
-            var beerPrice = document.createTextNode('Pris - ' + price + ' Kr');
+            beerInfoPrice.innerHTML = getSpanText("Pris" , price);
             beerInfoPrice.className = 'price';
-            beerInfoPrice.appendChild(beerPrice);
             return beerInfoPrice;
         }
 
         function getBeerAvailable(available) {
             var beerInfoAvailable = document.createElement('li');
             var isAvailable = !available ? 'Ej tillgänglig' : 'Tillgänglig';
-            var beerAvailable = document.createTextNode('Lokal butik - ' + isAvailable);
+            beerInfoAvailable.innerHTML = getSpanText("Lokal butik" , available);
             beerInfoAvailable.className = 'available';
-            beerInfoAvailable.appendChild(beerAvailable);
             return beerInfoAvailable;
         }
 
         function getBeerRating(rating) {
             var beerInfoRating = document.createElement('li');
-            var beerRating = document.createTextNode('Untappd - ' + rating);
+            beerInfoRating.innerHTML = getSpanText("Untappd" , rating);
             beerInfoRating.className = 'rating';
-            beerInfoRating.appendChild(beerRating);
             return beerInfoRating;
+        }
+
+        function getSpanText(categoryText,spanText){
+          var spanText = "<span class='spanText'>" + categoryText + "</span>" + " - " + spanText;
+          return spanText;
         }
     }
 
