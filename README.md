@@ -34,6 +34,7 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
   view:
     cards:
       -type: custom:beerbolaget-card
+       entity: sensor.beerbolaget
        rating: true
        filter_local: true
   ```
