@@ -1,16 +1,33 @@
 # Beerbolaget-card
 
+## Setup
+This card is available for integration in the two ways described below.
 
-### Required/Options
-`api_key` is required to use this card.
+### Local integration
+To add this card to your home assistant configuration, download the file (beerbolaget-card.js) and place it under <config_dir>/www.
+Add the following to your ui-lovlace.yaml
+```yaml
+- url: /local/beerbolaget-card.js
+  type: js
+```
+
+### Integration through HACS
+Install the card in HACS and add the following to your ui-lovelace.yaml
+```yaml
+- url: /community_plugin/beerbolaget-card/beerbolaget-card.js
+  type: js
+```
+
+## Required/Options
+[`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) component is required to use this card.
 
 |Name                |Default       |Supported options                                 |Description                                                                                                                                                                                                                                                                                                                                    |
 | --------------     | ------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|`entity`            |`None`        |`String`                                          |Required entity of beerbolaget sensor.
+|`entity`            |`None`        |`String`                                          |Required entity of Beerbolaget sensor.
 |`rating`            |`False`       |`False | True`                                    |Display ratings from Untappd. This required to also have this option added in the setup of Beerbolaget component.
 |`filter_local`      |`False`       |`False | True`                                    |Filter beers not available at the local store. A store must be added as option in the setup of Beerbolaget component.
 
-#### Example
+## Example
   ```yaml
   view:
     cards:
