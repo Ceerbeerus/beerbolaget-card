@@ -1,7 +1,7 @@
 # Beerbolaget-card
 
 ## Setup
-This card is available for integration in the two ways described below.
+This card is available for integration in two ways, which is described below.
 
 ### Local integration
 To add this card to your home assistant configuration, download the file (beerbolaget-card.js) and place it under <config_dir>/www.
