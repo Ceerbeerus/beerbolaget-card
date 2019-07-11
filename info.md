@@ -7,6 +7,9 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
   type: js
 ```
 
+## Releases
+Please note that release 0.0.5 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.1.8 to function properly.
+
 ## Required/Options
 [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) component is required to use this card.
 
