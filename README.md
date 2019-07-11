@@ -1,7 +1,7 @@
 # Beerbolaget-card
 A custom card for displaying information provided by [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget).
 
-<img src="./layout.png" width="300" height="562"/>
+<img src="./example/layout.png" width="300" height="562"/>
 
 ## Setup
 This card is available for integration in two ways, which is described below.

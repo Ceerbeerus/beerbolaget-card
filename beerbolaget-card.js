@@ -1,4 +1,4 @@
-﻿class BeerbolagetCard extends HTMLElement {
+class BeerbolagetCard extends HTMLElement {
     setConfig(config) {
         if (!config.entity) {
             throw new Error('You need to define an entity');
@@ -21,6 +21,7 @@
             const show_rating = this.config.rating;
             const filter_local = this.config.filter_local;
             const json = JSON.parse(state.attributes.beverages);
+            const localStore = state.attributes.local_store;
             const stateStr = state ? state.state : 'unavailable';
 
             // Release Info
@@ -80,7 +81,8 @@
 
                     // Beer Info  - Availability
                     if (!filter_local && json[x]['show_availability']) {
-                        var beerAvailable = getBeerAvailable(json[x]['availability_local']);
+                        var beerAvailable = getBeerAvailable(json[x]['availability_local'],
+                                                             localStore);
                         beerInfo.appendChild(beerAvailable);
                     }
 
@@ -163,7 +165,7 @@
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                 }
-                .spanText{
+                .category-text{
                   font-weight:bold;
                 }
 
@@ -201,43 +203,46 @@
 
         function getBeerCountry(country) {
             var beerInfoCountry = document.createElement('li');
-            beerInfoCountry.innerHTML = getSpanText("Land" , country);
+            beerInfoCountry.innerHTML = formatText("Land" , country);
             beerInfoCountry.className = 'country';
             return beerInfoCountry;
         }
 
         function getBeerType(type) {
             var beerInfoType = document.createElement('li');
-            beerInfoType.innerHTML = getSpanText("Typ" , type);
+            beerInfoType.innerHTML = formatText("Typ" , type);
             beerInfoType.className = 'type';
             return beerInfoType;
         }
 
         function getBeerPrice(price) {
             var beerInfoPrice = document.createElement('li');
-            beerInfoPrice.innerHTML = getSpanText("Pris" , price);
+            if (price % 1 != 0) {
+                price = price.toFixed(2);
+            }
+            beerInfoPrice.innerHTML = formatText("Pris" , price + ':-');
             beerInfoPrice.className = 'price';
             return beerInfoPrice;
         }
 
-        function getBeerAvailable(available) {
+        function getBeerAvailable(available, localStore) {
             var beerInfoAvailable = document.createElement('li');
             var isAvailable = !available ? 'Ej tillgänglig' : 'Tillgänglig';
-            beerInfoAvailable.innerHTML = getSpanText("Lokal butik" , available);
+            beerInfoAvailable.innerHTML = formatText(localStore, isAvailable);
             beerInfoAvailable.className = 'available';
             return beerInfoAvailable;
         }
 
         function getBeerRating(rating) {
             var beerInfoRating = document.createElement('li');
-            beerInfoRating.innerHTML = getSpanText("Untappd" , rating);
+            beerInfoRating.innerHTML = formatText("Untappd" , rating);
             beerInfoRating.className = 'rating';
             return beerInfoRating;
         }
 
-        function getSpanText(categoryText,spanText){
-          var spanText = "<span class='spanText'>" + categoryText + "</span>" + " - " + spanText;
-          return spanText;
+        function formatText(category, text){
+            var formattedText = "<span class='category-text'>" + category + "</span>" + " - " + text;
+            return formattedText;
         }
     }
 
