@@ -122,10 +122,13 @@ class BeerbolagetCard extends HTMLElement {
                 // Beer image container
                 var divBeerImage = document.createElement('div');
                 divBeerImage.className = 'beer-image';
+                // Add link to product
+                var link = getLink(json[x]['name'], json[x]['id']);
+                divBeerImage.appendChild(link);
                 var image = json[x]['image'] === '' ? 'https://via.placeholder.com/90x180' : json[x]['image'];
                 var imageNode = document.createElement('IMG');
                 imageNode.src = image;
-                divBeerImage.appendChild(imageNode);
+                link.appendChild(imageNode);
 
                 // Beer info container
                 var divBeerInfo = document.createElement('div');
@@ -250,6 +253,17 @@ class BeerbolagetCard extends HTMLElement {
         function formatText(category, text) {
             var formattedText = "<span class='category-text'>" + category + "</span>" + " - " + text;
             return formattedText;
+        }
+
+        function getLink(name, id) {
+            var link = document.createElement('a');
+            link.setAttribute('href', ('https://www.systembolaget.se/dryck/ol/' + formatLink(name, id)));
+            link.setAttribute('target', '_blank');
+            return link;
+        }
+
+        function formatLink(name, id) {
+            return (name + '-' + id).split(' ').join('-').toLowerCase();
         }
     }
 
