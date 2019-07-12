@@ -2,6 +2,7 @@
 A custom card for displaying information provided by [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget).
 
 A simple tap/click on the picture takes you to the product page of chosen beer.
+
 <img src="./example/layout.png" width="300" height="562"/>
 
 ## Setup
