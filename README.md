@@ -3,7 +3,7 @@ A custom card for displaying information provided by [`Beerbolaget`](https://git
 
 <img src="./example/layout.png" width="300" height="562"/>
 
-A simple tap/click on the picture takes you to the product page of chosen beer.
+A simple tap/click on a picture takes you to the product page of chosen beer.
 
 ## Setup
 This card is available for integration in two ways, which is described below.
