@@ -15,6 +15,9 @@ Add the following to your ui-lovlace.yaml
   type: js
 ```
 
+## Releases
+Please note that release 0.0.5 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.1.8 or later to function properly.
+
 ### Integration through HACS
 Install the card in HACS and add the following to your ui-lovelace.yaml
 ```yaml
