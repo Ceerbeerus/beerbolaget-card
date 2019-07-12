@@ -1,5 +1,7 @@
 <img src="https://raw.githubusercontent.com/Ceerbeerus/beerbolaget-card/master/example/layout.png" width="300" height="562"/>
 
+A simple click/tap on a picture takes you to the product page of chosen beer.
+
 # Integration
 Install the card in HACS and add the following to your ui-lovelace.yaml
 ```yaml
@@ -8,7 +10,11 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
 ```
 
 ## Releases
-Please note that release 0.0.5 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.1.8 or later to function properly.
+Please note that:
+
+* release 0.0.5 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.1.8 or later to function properly.
+* release 0.0.7 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.1.9 or later to function properly.
+
 
 ## Required/Options
 [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) component is required to use this card.
