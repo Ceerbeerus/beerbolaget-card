@@ -22,6 +22,7 @@ Please note that:
 
 * release 0.0.5 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.1.8 or later to function properly.
 * release 0.0.7 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.1.9 or later to function properly.
+* release 0.0.8 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.2.2 or later to function properly.
 
 
 ### Integration through HACS

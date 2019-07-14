@@ -97,7 +97,7 @@ class BeerbolagetCard extends HTMLElement {
         const show_rating = this.config.rating;
         const filter_local = this.config.filter_local;
         const localStore = state.attributes.local_store;
-        const stateStr = state ? state.state : 'unavailable';
+        const release_date = state.attributes.release_date;
 
         // Clear card content.
         this.content.innerHTML = "";
@@ -105,7 +105,7 @@ class BeerbolagetCard extends HTMLElement {
         // Release Info
         var releaseInfo = document.createElement('p');
         releaseInfo.className = 'release';
-        var release = document.createTextNode('Små partier: ' + stateStr);
+        var release = document.createTextNode('Små partier: ' + release_date);
         releaseInfo.appendChild(release);
         this.content.appendChild(releaseInfo);
 
