@@ -263,11 +263,12 @@ class BeerbolagetCard extends HTMLElement {
         }
 
         function formatLink(name, id) {
-            return (name + '-' + id).split(' ').join('-').toLowerCase()
-                        .replace('å', 'a')
-                        .raplace('ä', 'a')
-                        .replace('ö', 'o')
-                        .raplace('Ø', 'o');
+            link = (name + '-' + id).split(' ').join('-').toLowerCase();
+            return (link
+                     .replace('å', 'a')
+                     .replace('ä', 'a')
+                     .replace('ö', 'o')
+                     .replace('Ø', 'o'));
         }
     }
 
