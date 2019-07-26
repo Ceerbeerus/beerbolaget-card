@@ -265,12 +265,12 @@ class BeerbolagetCard extends HTMLElement {
         function formatLink(name, id) {
             link = (name + '-' + id).toLowerCase();
             return (link
-                     .replace(new RegExp(search, 'å'), 'a')
-                     .replace(new RegExp(search, 'ä'), 'a')
-                     .replace(new RegExp(search, 'ö'), 'o')
-                     .replace(new RegExp(search, 'Ø'), 'o')
-                     .replace(new RegExp(search, '&'), '')
-                     .replace(new RegExp(search, ' '), '-'));
+                     .replace(new RegExp('å', 'g'), 'a')
+                     .replace(new RegExp('ä', 'g'), 'a')
+                     .replace(new RegExp('ö', 'g'), 'o')
+                     .replace(new RegExp('Ø', 'g'), 'o')
+                     .replace(new RegExp('&', 'g'), '')
+                     .replace(new RegExp(' ', 'g'), '-'));
         }
     }
 
