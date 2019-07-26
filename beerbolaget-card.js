@@ -268,7 +268,8 @@ class BeerbolagetCard extends HTMLElement {
                      .replace('å', 'a')
                      .replace('ä', 'a')
                      .replace('ö', 'o')
-                     .replace('Ø', 'o'));
+                     .replace('Ø', 'o')
+                     .replace('-&', ''));
         }
     }
 
