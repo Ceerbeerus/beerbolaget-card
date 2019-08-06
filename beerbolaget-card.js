@@ -43,6 +43,7 @@ class BeerbolagetCard extends HTMLElement {
                     padding-top: 10px;
                 }
                 .beer-item {
+                    position: relative;
                     clear: both;
                     overflow: auto;
                 }
@@ -78,6 +79,26 @@ class BeerbolagetCard extends HTMLElement {
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                 }
+                .rating-container {
+                    position: absolute;
+                    top: 80px;
+                    right: 5px;
+                }
+                .user-rating {
+                    overflow: auto;
+                    position: relative;
+                }
+                .user-rating ha-icon {
+                    height: 70px;
+                    width: 70px;
+                    color: #008528;
+                }
+                .user-rating p {
+                    color: #ffffff;
+                    position: absolute;
+                    top: 2px;
+                    left: 18px;
+                }
                 .category-text{
                     font-weight: bold;
                 }
@@ -96,6 +117,7 @@ class BeerbolagetCard extends HTMLElement {
 
         const show_rating = this.config.rating;
         const filter_local = this.config.filter_local;
+        const user_ratings = this.config.user_ratings;
         const localStore = state.attributes.local_store;
         const release_date = state.attributes.release_date;
 
@@ -178,6 +200,13 @@ class BeerbolagetCard extends HTMLElement {
                 // Append image and info container to beer container.
                 divBeer.appendChild(divBeerImage);
                 divBeer.appendChild(divBeerInfo);
+
+                // User checkins & rating
+                if (user_ratings && json[x]['untappd_checked_in']) {
+                    var beerCheckedIn = getUserRating(json[x]['untappd_rating_by_user']);
+                    divBeer.appendChild(beerCheckedIn);
+                }
+
                 liElement.appendChild(divBeer);
                 beerList.appendChild(liElement);
             }
@@ -248,6 +277,24 @@ class BeerbolagetCard extends HTMLElement {
             beerInfoRating.innerHTML = formatText("Untappd", rating);
             beerInfoRating.className = 'rating';
             return beerInfoRating;
+        }
+
+        function getUserRating(rating_by_user) {
+            if (rating_by_user % 1 == 0) {
+                rating_by_user = rating_by_user.toFixed(1);
+            }
+            var ratingContainer = document.createElement('div');
+            ratingContainer.className = 'rating-container';
+            var ratingByUser = document.createElement('div');
+            ratingContainer.appendChild(ratingByUser);
+            var icon = document.createElement('ha-icon');
+            icon.icon = 'mdi:check-decagram';
+            var userRating = document.createElement('p');
+            userRating.innerHTML = rating_by_user;
+            ratingByUser.appendChild(icon);
+            ratingByUser.appendChild(userRating);
+            ratingByUser.className = 'user-rating';
+            return ratingContainer;
         }
 
         function formatText(category, text) {
