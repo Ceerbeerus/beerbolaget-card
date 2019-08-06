@@ -231,11 +231,9 @@ class BeerbolagetCard extends HTMLElement {
                 breweryChecks.shift();
             }
             if (detailedName && (name.toLowerCase().includes(breweryChecks[0]) ||
-                                (breweryChecks.length > 1 &&
-                                    name.toLowerCase().includes(breweryChecks[1]))) &&
-                (!detailedName.toLowerCase().includes(breweryChecks[0])) &&
-                (breweryChecks.length > 1 &&
-                    !detailedName.toLowerCase().includes(breweryChecks[1]))) {
+                   (breweryChecks.length > 1 &&
+                    name.toLowerCase().includes(breweryChecks[1]))) &&
+                        (!detailedName.toLowerCase().includes(breweryChecks[0]))) {
                 beerName = detailedName;
             }
             var infoName = document.createTextNode(beerName);
