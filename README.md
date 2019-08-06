@@ -39,7 +39,7 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
 | --------------     | ------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |`entity`            |`None`        |`String`                                          |Required entity of Beerbolaget sensor.
 |`rating`            |`false`       |`false \| true`                                   |Display ratings from Untappd. This required to also have this option added in the setup of Beerbolaget component.
-|`user_ratings`      |`false`       |`false \| true`                                   |Display your ratings for beers you have checked in. This required to also have Untappd token option added in the setup of Beerbolaget component.
+|`user_ratings`      |`false`       |`false \| true`                                   |Display your ratings for beers you have checked in using Untappd. This required to also have Untappd token option added in the setup of Beerbolaget component.
 |`filter_local`      |`false`       |`false \| true`                                   |Filter to only show beers available at the local store. A store must be added as option in the setup of Beerbolaget component.
 
 ### Layout when `user_ratings` is enabled
