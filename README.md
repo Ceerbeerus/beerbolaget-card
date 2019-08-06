@@ -43,7 +43,7 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
 |`filter_local`      |`false`       |`false \| true`                                   |Filter to only show beers available at the local store. A store must be added as option in the setup of Beerbolaget component.
 
 ### Layout when `user_ratings` is enabled
-<img src="./example/layout2.png" width="300" height="562"/>
+<img src="./example/layout2.png" width="400" height="499"/>
 
 ## Example
   ```yaml
