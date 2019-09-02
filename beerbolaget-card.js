@@ -230,7 +230,8 @@ class BeerbolagetCard extends HTMLElement {
             if (breweryChecks[0] === 'the') {
                 breweryChecks.shift();
             }
-            if (detailedName && (name.toLowerCase() === breweryChecks[0] ||
+            if (detailedName && ((name.toLowerCase() === breweryChecks[0]) ||
+                   (replaceChar(name.toLowerCase()) === breweryChecks[0]) ||
                    (breweryChecks.length > 1 &&
                     name.toLowerCase().includes(breweryChecks[1]))) &&
                         (!detailedName.toLowerCase().includes(breweryChecks[0]))) {
@@ -313,13 +314,18 @@ class BeerbolagetCard extends HTMLElement {
 
         function formatLink(name, id) {
             link = (name + '-' + id).toLowerCase();
-            return (link
+            return (replaceChar(link);
+        }
+        
+        function replaceChar(name) {
+            return (name
                      .replace(new RegExp('å', 'g'), 'a')
                      .replace(new RegExp('ä', 'g'), 'a')
                      .replace(new RegExp('ö', 'g'), 'o')
                      .replace(new RegExp('Ø', 'g'), 'o')
                      .replace(new RegExp('& ', 'g'), '')
-                     .replace(new RegExp(' ', 'g'), '-'));
+                     .replace(new RegExp(' ', 'g'), '-')
+                     .replace(new RegExp('ü', 'g'), 'u'));
         }
     }
 
