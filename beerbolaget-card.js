@@ -314,7 +314,7 @@ class BeerbolagetCard extends HTMLElement {
 
         function formatLink(name, id) {
             link = (name + '-' + id).toLowerCase();
-            return (replaceChar(link);
+            return (replaceChar(link));
         }
         
         function replaceChar(name) {
