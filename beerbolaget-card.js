@@ -230,8 +230,8 @@ class BeerbolagetCard extends HTMLElement {
             if (breweryChecks[0] === 'the') {
                 breweryChecks.shift();
             }
-            if (detailedName && ((name.toLowerCase() === breweryChecks[0]) ||
-                   (replaceChar(name.toLowerCase()) === breweryChecks[0]) ||
+            if (detailedName && ((name.toLowerCase().includes(breweryChecks[0])) ||
+                   (replaceChar(name.toLowerCase()).includes(breweryChecks[0])) ||
                    (breweryChecks.length > 1 &&
                     name.toLowerCase().includes(breweryChecks[1]))) &&
                         (!detailedName.toLowerCase().includes(breweryChecks[0]))) {
