@@ -328,7 +328,7 @@ class BeerbolagetCard extends HTMLElement {
                      .replace(new RegExp('ü', 'g'), 'u')
                      .replace(new RegExp('/', 'g'), '')
                      .replace(new RegExp("'", 'g'), '')
-                     .replace(new RegExp('.', 'g'), '')
+                     .replace(new RegExp('\\.', 'g'), '')
                      .replace(new RegExp('\\+', 'g'), '')
                      .replace(new RegExp('  ', 'g'), ' ')
                      .replace(new RegExp(' ', 'g'), '-'));
