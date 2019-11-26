@@ -21,6 +21,11 @@ class BeerbolagetCard extends HTMLElement {
                 .card-div {
                     margin-top: 0px;
                 }
+                .card-header {
+                    background-color: #008528;
+                    line-height: 50px;
+                    padding: 0px 16px 15px;
+                }
                 .beer-list {
                     list-style-type: none;
                     margin: 0px;
@@ -75,7 +80,7 @@ class BeerbolagetCard extends HTMLElement {
                     font-size: 13px;
                 }
                 .release {
-                    margin-top: -15px;
+                    margin-top: -25px;
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                 }
