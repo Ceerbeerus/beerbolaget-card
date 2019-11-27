@@ -24,7 +24,7 @@ Please note that:
 * release 0.0.7 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.1.9 or later to function properly.
 * release 0.0.8 of this card requires [`Beerbolaget`](https://github.com/Ceerbeerus/beerbolaget) 0.2.2 or later to function properly.
 
-* release 0.1.27< of this card requires [`Card-Mod`](https://github.com/thomasloven/lovelace-card-mod) for the best experience.
+* release 0.1.27< of this card requires [`Card-Mod`](https://github.com/thomasloven/lovelace-card-mod) for best experience.
 
 ### Integration through HACS
 Install the card in HACS and add the following to your ui-lovelace.yaml
