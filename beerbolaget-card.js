@@ -67,7 +67,7 @@ class BeerbolagetCard extends HTMLElement {
                     padding: 0px;
                 }
                 .beer-name {
-                    font-weight: bold;
+                    font-weight: 500;
                     font-size: 19px;
                     background-color: #008528;
                 }
