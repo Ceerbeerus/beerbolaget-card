@@ -23,6 +23,7 @@ class BeerbolagetCard extends HTMLElement {
                 }
                 .card-header {
                     background-color: #008528;
+                    color: #fcd303;
                     line-height: 50px;
                     padding: 0px 16px 15px;
                     font-weight: 500;
@@ -70,6 +71,7 @@ class BeerbolagetCard extends HTMLElement {
                     font-weight: 500;
                     font-size: 19px;
                     background-color: #008528;
+                    color: #fcd303;
                 }
                 .brewery {
                     font-size: 15px;
