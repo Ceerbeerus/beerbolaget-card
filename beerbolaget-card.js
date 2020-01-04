@@ -87,6 +87,7 @@ class BeerbolagetCard extends HTMLElement {
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                     font-weight: 500;
+                    color: #fcd303;
                 }
                 .rating-container {
                     position: absolute;
