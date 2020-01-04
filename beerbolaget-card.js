@@ -48,6 +48,8 @@ class BeerbolagetCard extends HTMLElement {
                     overflow: auto;
                     padding-left: 0px;
                     padding-top: 10px;
+                    position: relative;
+                    z-index: 1;
                 }
                 .beer-item {
                     position: relative;
@@ -62,6 +64,8 @@ class BeerbolagetCard extends HTMLElement {
                     box-shadow: 8px 0 8px -6px black;
                     -moz-box-shadow: 8px 0 8px -6px black;
                     -webkit-box-shadow: 8px 0 8px -6px black;
+                    position: relative;
+                    z-index: 1;
                 }
                 .beer-image img {
                     display: block;
