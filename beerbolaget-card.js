@@ -12,6 +12,8 @@ class BeerbolagetCard extends HTMLElement {
         if (!config.release_date_color) this.config.release_date_color = '#fcd303';
         if (!config.available_color) this.config.available_color = '#000000';
         if (!config.not_available_color) this.config.not_available_color = '#000000';
+        if (!config.user_rating_icon_color) this.config.user_rating_icon_color = '#008528';
+        if (!config.user_rating_text_color) this.config.user_rating_text_color = '#ffffff';
     }
 
     set hass(hass) {
@@ -119,10 +121,10 @@ class BeerbolagetCard extends HTMLElement {
                 .user-rating ha-icon {
                     height: 70px;
                     width: 70px;
-                    color: #008528;
+                    color: ${this.config.user_rating_icon_color};
                 }
                 .user-rating p {
-                    color: #ffffff;
+                    color: ${this.config.user_rating_text_color};
                     position: absolute;
                     top: 2px;
                     left: 18px;
