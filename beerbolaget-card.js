@@ -211,14 +211,8 @@ class BeerbolagetCard extends HTMLElement {
 
                 // Beer Info  - Availability
                 if (!filter_local && json[x]['show_availability']) {
-                    var beerAvailable = document.createTextNode(getBeerAvailable(json[x]['availability_local'],
-                        localStore));
-                    if (beerAvailable === 'Tillgänglig') {
-                        beerAvailable.className = 'available';
-                    } 
-                    else {
-                        beerAvailable.className = 'not_available';
-                    }
+                    var beerAvailable = getBeerAvailable(json[x]['availability_local'],
+                        localStore);
                     beerInfo.appendChild(beerAvailable);
                 }
 
@@ -303,8 +297,15 @@ class BeerbolagetCard extends HTMLElement {
         function getBeerAvailable(available, localStore) {
             var beerInfoAvailable = document.createElement('li');
             var isAvailable = !available ? 'Ej tillgänglig' : 'Tillgänglig';
-            beerInfoAvailable.innerHTML = formatText(localStore, isAvailable);
-            beerInfoAvailable.className = 'available';
+            var beerAvailable = document.createTextNode(isAvailable);
+            if (isAvailable === 'Tillgänglig') {
+                beerAvailable.className = 'available';
+            } 
+            else {
+                beerAvailable.className = 'not_available';
+            }
+            beerInfoAvailable.innerHTML = formatText(localStore, beerAvailable);
+            beerInfoAvailable.className = 'availability';
             return beerInfoAvailable;
         }
 
