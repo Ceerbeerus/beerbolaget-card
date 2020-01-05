@@ -5,12 +5,12 @@ class BeerbolagetCard extends HTMLElement {
         }
         this.config = config;
         
-        if (!config.style.header_color) config.style.header_color = '#008528';
-        if (!config.style.beer_name_header_color) config.style.beer_name_header_color = '#008528';
-        if (!config.style.beer_name_color) config.style.beer_name_color = '#fcd303';
-        if (!config.style.release_date_color) config.style.release_date_color = '#fcd303';
-        if (!config.style.available_color) config.style.available_color = '#000000';
-        if (!config.style.not_available_color) config.style.not_available_color = '#000000';
+        if (!config.style || !config.style.header_color) config.style.header_color = '#008528';
+        if (!config.style || !config.style.beer_name_header_color) config.style.beer_name_header_color = '#008528';
+        if (!config.style || !config.style.beer_name_color) config.style.beer_name_color = '#fcd303';
+        if (!config.style || !config.style.release_date_color) config.style.release_date_color = '#fcd303';
+        if (!config.style || !config.style.available_color) config.style.available_color = '#000000';
+        if (!config.style || !config.style.not_available_color) config.style.not_available_color = '#000000';
     }
 
     set hass(hass) {
