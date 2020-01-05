@@ -55,6 +55,8 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
 |`release_date_color`         |`#fcd303`     |`string`                                          |Color of release date, can be any valid CSS color value or variable.
 |`available_color`            |`#000000`     |`string`                                          |Color of the availability text when the beer is available, can be any valid CSS color value or variable.
 |`not_available_color`        |`#000000`     |`string`                                          |Color of the availability text when the beer isn't available, can be any valid CSS color value or variable.
+|`user_rating_icon_color`     |`#008528`     |`string`                                          |Color of the user rating icons, can be any valid CSS color value or variable.
+|`user_rating_text_color`     |`#ffffff`     |`string`                                          |Color of the user rating icon text, can be any valid CSS color value or variable.
 
 
 ### Layout when `user_ratings` is enabled
@@ -76,4 +78,6 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
        release_date_color: "#FFFF00"
        available_color: "#00FF00"
        not_available_color: "#FF0000"
+       user_rating_icon_color: "#008528"
+       user_rating_text_color: "#ffff00"
   ```
