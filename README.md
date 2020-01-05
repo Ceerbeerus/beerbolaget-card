@@ -70,10 +70,10 @@ Install the card in HACS and add the following to your ui-lovelace.yaml
        user_ratings: true
        filter_local: true
        header_background_color: "#0000FF"
-      header_text_color: "#763455"
-      beer_name_background_color: "#770000"
-      beer_name_color: "#333333"
-      release_date_color: "#FFFF00"
-      available_color: "#00FF00"
-      not_available_color: "#FF0000"
+       header_text_color: "#763455"
+       beer_name_background_color: "#770000"
+       beer_name_color: "#333333"
+       release_date_color: "#FFFF00"
+       available_color: "#00FF00"
+       not_available_color: "#FF0000"
   ```
