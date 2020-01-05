@@ -4,6 +4,7 @@ class BeerbolagetCard extends HTMLElement {
             throw new Error('You need to define an entity');
         }
         this.config = config;
+        this.config.style = config.style;
         
         if (!config.style || !config.style.header_color) config.style.header_color = '#008528';
         if (!config.style || !config.style.beer_name_header_color) config.style.beer_name_header_color = '#008528';
