@@ -299,7 +299,7 @@ class BeerbolagetCard extends HTMLElement {
             var isAvailable = !available ? 'Ej tillgänglig' : 'Tillgänglig';
             var availabilityClass = !available ? 'not_available' : 'available';
 
-            isAvailable = "<span class='" + availabilityClass + "'>" + isAvailable + "</span">;
+            isAvailable = "<span class='" + availabilityClass + "'>" + isAvailable + "</span>";
             beerInfoAvailable.innerHTML = formatText(localStore, isAvailable);
             beerInfoAvailable.className = 'availability';
             return beerInfoAvailable;
