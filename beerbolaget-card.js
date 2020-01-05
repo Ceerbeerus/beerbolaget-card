@@ -5,8 +5,9 @@ class BeerbolagetCard extends HTMLElement {
         }
         this.config = config;
         
-        if (!config.header_color) this.config.header_color = '#008528';
-        if (!config.beer_name_header_color) this.config.beer_name_header_color = '#008528';
+        if (!config.header_background_color) this.config.header_background_color = '#008528';
+        if (!config.header_text_color) this.config.header_text_color = '#fcd303';
+        if (!config.beer_name_background_color) this.config.beer_name_background_color = '#008528';
         if (!config.beer_name_color) this.config.beer_name_color = '#fcd303';
         if (!config.release_date_color) this.config.release_date_color = '#fcd303';
         if (!config.available_color) this.config.available_color = '#000000';
@@ -29,8 +30,8 @@ class BeerbolagetCard extends HTMLElement {
                     margin-top: 0px;
                 }
                 .card-header {
-                    background-color: ${this.config.header_color};
-                    color: #fcd303;
+                    background-color: ${this.config.header_background_color};
+                    color: ${this.config.header_text_color};
                     line-height: 50px;
                     padding: 0px 16px 15px;
                     font-weight: 500;
@@ -81,7 +82,7 @@ class BeerbolagetCard extends HTMLElement {
                 .beer-name {
                     font-weight: 500;
                     font-size: 19px;
-                    background-color: ${this.config.beer_name_header_color};
+                    background-color: ${this.config.beer_name_background_color};
                     color: ${this.config.beer_name_color};
                 }
                 .brewery {
@@ -100,10 +101,10 @@ class BeerbolagetCard extends HTMLElement {
                     font-weight: 500;
                     color: ${this.config.release_date_color};
                 }
-                .available_color {
+                .available {
                     color: ${this.config.available_color};
                 }
-                .not_available_color {
+                .not_available {
                     color: ${this.config.not_available_color};
                 }
                 .rating-container {
