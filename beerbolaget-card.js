@@ -297,14 +297,10 @@ class BeerbolagetCard extends HTMLElement {
         function getBeerAvailable(available, localStore) {
             var beerInfoAvailable = document.createElement('li');
             var isAvailable = !available ? 'Ej tillgänglig' : 'Tillgänglig';
-            var beerAvailable = document.createTextNode(isAvailable);
-            if (isAvailable === 'Tillgänglig') {
-                beerAvailable.className = 'available';
-            } 
-            else {
-                beerAvailable.className = 'not_available';
-            }
-            beerInfoAvailable.innerHTML = formatText(localStore, beerAvailable);
+            var availabilityClass = !available ? 'not_available' : 'available';
+
+            isAvailable = "<span class='" + availabilityClass + "'>" + isAvailable + "</span">;
+            beerInfoAvailable.innerHTML = formatText(localStore, isAvailable);
             beerInfoAvailable.className = 'availability';
             return beerInfoAvailable;
         }
