@@ -4,14 +4,13 @@ class BeerbolagetCard extends HTMLElement {
             throw new Error('You need to define an entity');
         }
         this.config = config;
-        this.config.style = config.style;
         
-        if (!config.style || !config.style.header_color) this.config.style.header_color = '#008528';
-        if (!config.style || !config.style.beer_name_header_color) this.config.style.beer_name_header_color = '#008528';
-        if (!config.style || !config.style.beer_name_color) this.config.style.beer_name_color = '#fcd303';
-        if (!config.style || !config.style.release_date_color) this.config.style.release_date_color = '#fcd303';
-        if (!config.style || !config.style.available_color) this.config.style.available_color = '#000000';
-        if (!config.style || !config.style.not_available_color) this.config.style.not_available_color = '#000000';
+        if (!config.style.header_color) this.config.header_color = '#008528';
+        if (!config.style.beer_name_header_color) this.config.beer_name_header_color = '#008528';
+        if (!config.style.beer_name_color) this.config.beer_name_color = '#fcd303';
+        if (!config.style.release_date_color) this.config.release_date_color = '#fcd303';
+        if (!config.style.available_color) this.config.available_color = '#000000';
+        if (!config.style.not_available_color) this.config.not_available_color = '#000000';
     }
 
     set hass(hass) {
@@ -30,7 +29,7 @@ class BeerbolagetCard extends HTMLElement {
                     margin-top: 0px;
                 }
                 .card-header {
-                    background-color: ${this.config.style.header_color};
+                    background-color: ${this.config.header_color};
                     color: #fcd303;
                     line-height: 50px;
                     padding: 0px 16px 15px;
@@ -82,8 +81,8 @@ class BeerbolagetCard extends HTMLElement {
                 .beer-name {
                     font-weight: 500;
                     font-size: 19px;
-                    background-color: ${this.config.style.beer_name_header_color};
-                    color: ${this.config.style.beer_name_color};
+                    background-color: ${this.config.beer_name_header_color};
+                    color: ${this.config.beer_name_color};
                 }
                 .brewery {
                     font-size: 15px;
@@ -99,13 +98,13 @@ class BeerbolagetCard extends HTMLElement {
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                     font-weight: 500;
-                    color: ${this.config.style.release_date_color};
+                    color: ${this.config.release_date_color};
                 }
                 .available_color {
-                    color: ${this.config.style.available_color};
+                    color: ${this.config.available_color};
                 }
                 .not_available_color {
-                    color: ${this.config.style.not_available_color};
+                    color: ${this.config.not_available_color};
                 }
                 .rating-container {
                     position: absolute;
