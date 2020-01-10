@@ -143,6 +143,9 @@ class BeerbolagetCard extends HTMLElement {
         
         // Release Info
         const release_date = state.attributes.release_date;
+        if (this.prev_release_date == release_date) return;
+        this.prev_release_date = release_date;
+        
         var releaseInfo = document.createElement('p');
         releaseInfo.className = 'release';
         var release = document.createTextNode('Små partier: ' + release_date);
