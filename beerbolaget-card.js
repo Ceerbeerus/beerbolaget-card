@@ -140,6 +140,14 @@ class BeerbolagetCard extends HTMLElement {
         const entityId = this.config.entity;
         const state = hass.states[entityId];
         if (!state) return;
+        
+        // Release Info
+        const release_date = state.attributes.release_date;
+        var releaseInfo = document.createElement('p');
+        releaseInfo.className = 'release';
+        var release = document.createTextNode('Små partier: ' + release_date);
+        releaseInfo.appendChild(release);
+        this.content.appendChild(releaseInfo);
 
         const json = JSON.parse(state.attributes.beverages);
         if (!json || !json[1] || this.prev_json == JSON.stringify(json)) return;
@@ -149,17 +157,10 @@ class BeerbolagetCard extends HTMLElement {
         const filter_local = this.config.filter_local;
         const user_ratings = this.config.user_ratings;
         const localStore = state.attributes.local_store;
-        const release_date = state.attributes.release_date;
+        
 
         // Clear card content.
         this.content.innerHTML = "";
-
-        // Release Info
-        var releaseInfo = document.createElement('p');
-        releaseInfo.className = 'release';
-        var release = document.createTextNode('Små partier: ' + release_date);
-        releaseInfo.appendChild(release);
-        this.content.appendChild(releaseInfo);
 
         var beerList = document.createElement('ul');
         beerList.className = 'beer-list';
