@@ -1,36 +1,27 @@
 class BeerbolagetCard extends HTMLElement {
-    var header_background_color;
-    var header_text_color;
-    var beer_name_background_color;
-    var beer_name_color;
-    var release_date_color;
-    var available_color;
-    var not_available_color;
-    var user_rating_icon_color;
-    var user_rating_text_color;
+    this.header_background_color;
+    this.header_text_color;
+    this.beer_name_background_color;
+    this.beer_name_color;
+    this.release_date_color;
+    this.available_color;
+    this.not_available_color;
+    this.user_rating_icon_color;
+    this.user_rating_text_color;
 
     setConfig(config) {
         if (!config.entity) {
             throw new Error('You need to define an entity');
         }
-        //header_background_color = !config.header_background_color ? '#008528' : config.header_background_color;
-        //header_text_color = !config.header_text_color ? '#fcd303' : config.header_text_color;
-        //beer_name_background_color = !config.beer_name_background_color ? '#008528' : config.beer_name_background_color;
-        //beer_name_color = !config.beer_name_color ? '#fcd303' : config.beer_name_color;
-        //release_date_color = !config.release_date_color ? '#fcd303' : config.release_date_color;
-        //available_color = !config.available_color ? '#000000' : config.available_color;
-        //not_available_color = !config.not_available_color ? '#000000' : config.not_available_color;
-        //user_rating_icon_color = !config.user_rating_icon_color ? '#008528' : config.user_rating_icon_color;
-        //user_rating_text_color = !config.user_rating_text_color ? '#ffffff' : config.user_rating_text_color;
-        header_background_color = '#008528';
-        header_text_color = '#fcd303';
-        beer_name_background_color = '#008528';
-        beer_name_color = '#fcd303';
-        release_date_color = '#fcd303';
-        available_color = '#000000';
-        not_available_color = '#000000';
-        user_rating_icon_color = '#008528';
-        user_rating_text_color = '#ffffff';
+        this.header_background_color = !config.header_background_color ? '#008528' : config.header_background_color;
+        this.header_text_color = !config.header_text_color ? '#fcd303' : config.header_text_color;
+        this.beer_name_background_color = !config.beer_name_background_color ? '#008528' : config.beer_name_background_color;
+        this.beer_name_color = !config.beer_name_color ? '#fcd303' : config.beer_name_color;
+        this.release_date_color = !config.release_date_color ? '#fcd303' : config.release_date_color;
+        this.available_color = !config.available_color ? '#000000' : config.available_color;
+        this.not_available_color = !config.not_available_color ? '#000000' : config.not_available_color;
+        this.user_rating_icon_color = !config.user_rating_icon_color ? '#008528' : config.user_rating_icon_color;
+        this.user_rating_text_color = !config.user_rating_text_color ? '#ffffff' : config.user_rating_text_color;
     }
 
     set hass(hass) {
@@ -49,8 +40,8 @@ class BeerbolagetCard extends HTMLElement {
                     margin-top: 0px;
                 }
                 .card-header {
-                    background-color: ${header_background_color};
-                    color: ${header_text_color};
+                    background-color: ${this.header_background_color};
+                    color: ${this.header_text_color};
                     line-height: 50px;
                     padding: 0px 16px 15px;
                     font-weight: 500;
@@ -101,8 +92,8 @@ class BeerbolagetCard extends HTMLElement {
                 .beer-name {
                     font-weight: 500;
                     font-size: 19px;
-                    background-color: ${beer_name_background_color};
-                    color: ${beer_name_color};
+                    background-color: ${this.beer_name_background_color};
+                    color: ${this.beer_name_color};
                 }
                 .brewery {
                     font-size: 15px;
@@ -118,13 +109,13 @@ class BeerbolagetCard extends HTMLElement {
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                     font-weight: 500;
-                    color: ${release_date_color};
+                    color: ${this.release_date_color};
                 }
                 .available {
-                    color: ${available_color};
+                    color: ${this.available_color};
                 }
                 .not_available {
-                    color: ${not_available_color};
+                    color: ${this.not_available_color};
                 }
                 .rating-container {
                     position: absolute;
@@ -138,10 +129,10 @@ class BeerbolagetCard extends HTMLElement {
                 .user-rating ha-icon {
                     height: 70px;
                     width: 70px;
-                    color: ${user_rating_icon_color};
+                    color: ${this.user_rating_icon_color};
                 }
                 .user-rating p {
-                    color: ${user_rating_text_color};
+                    color: ${this.user_rating_text_color};
                     position: absolute;
                     top: 2px;
                     left: 18px;
