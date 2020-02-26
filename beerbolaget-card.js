@@ -1,3 +1,6 @@
+import { deepClone } from "deep-clone-simple";
+// https://github.com/balloob/deep-clone-simple
+
 class BeerbolagetCard extends HTMLElement {
     setConfig(config) {
         if (!config.entity) {
