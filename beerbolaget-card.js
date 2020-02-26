@@ -4,11 +4,12 @@ class BeerbolagetCard extends HTMLElement {
             throw new Error('You need to define an entity');
         }
         this.config = JSON.parse(JSON.stringify(config));
-        this.header_background_color = !config.header_background_color ? '#008528' : config.header_background_color;
-        this.header_text_color = !config.header_text_color ? '#fcd303' : config.header_text_color;
         this.beer_name_background_color = !config.beer_name_background_color ? '#008528' : config.beer_name_background_color;
         this.beer_name_color = !config.beer_name_color ? '#fcd303' : config.beer_name_color;
+        this.header_background_color = !config.header_background_color ? '#008528' : config.header_background_color;
+        this.header_text_color = !config.header_text_color ? '#fcd303' : config.header_text_color;
         this.release_date_color = !config.release_date_color ? '#fcd303' : config.release_date_color;
+        this.release_date_margin_top = !config.release_date_margin_top ? '-25px' : config.release_date_margin_top;
         this.available_color = !config.available_color ? '#000000' : config.available_color;
         this.not_available_color = !config.not_available_color ? '#000000' : config.not_available_color;
         this.user_rating_icon_color = !config.user_rating_icon_color ? '#008528' : config.user_rating_icon_color;
@@ -96,7 +97,7 @@ class BeerbolagetCard extends HTMLElement {
                     font-size: 13px;
                 }
                 .release {
-                    margin-top: -25px;
+                    margin-top: ${this.release_date_margin_top};
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                     font-weight: 500;
