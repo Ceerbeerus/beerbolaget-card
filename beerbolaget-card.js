@@ -13,15 +13,24 @@ class BeerbolagetCard extends HTMLElement {
         if (!config.entity) {
             throw new Error('You need to define an entity');
         }
-        header_background_color = !config.header_background_color ? '#008528' : config.header_background_color;
-        header_text_color = !config.header_text_color ? '#fcd303' : config.header_text_color;
-        beer_name_background_color = !config.beer_name_background_color ? '#008528' : config.beer_name_background_color;
-        beer_name_color = !config.beer_name_color ? '#fcd303' : config.beer_name_color;
-        release_date_color = !config.release_date_color ? '#fcd303' : config.release_date_color;
-        available_color = !config.available_color ? '#000000' : config.available_color;
-        not_available_color = !config.not_available_color ? '#000000' : config.not_available_color;
-        user_rating_icon_color = !config.user_rating_icon_color ? '#008528' : config.user_rating_icon_color;
-        user_rating_text_color = !config.user_rating_text_color ? '#ffffff' : config.user_rating_text_color;
+        //header_background_color = !config.header_background_color ? '#008528' : config.header_background_color;
+        //header_text_color = !config.header_text_color ? '#fcd303' : config.header_text_color;
+        //beer_name_background_color = !config.beer_name_background_color ? '#008528' : config.beer_name_background_color;
+        //beer_name_color = !config.beer_name_color ? '#fcd303' : config.beer_name_color;
+        //release_date_color = !config.release_date_color ? '#fcd303' : config.release_date_color;
+        //available_color = !config.available_color ? '#000000' : config.available_color;
+        //not_available_color = !config.not_available_color ? '#000000' : config.not_available_color;
+        //user_rating_icon_color = !config.user_rating_icon_color ? '#008528' : config.user_rating_icon_color;
+        //user_rating_text_color = !config.user_rating_text_color ? '#ffffff' : config.user_rating_text_color;
+        header_background_color = '#008528';
+        header_text_color = '#fcd303';
+        beer_name_background_color = '#008528';
+        beer_name_color = '#fcd303';
+        release_date_color = '#fcd303';
+        available_color = '#000000';
+        not_available_color = '#000000';
+        user_rating_icon_color = '#008528';
+        user_rating_text_color = '#ffffff';
     }
 
     set hass(hass) {
