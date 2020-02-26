@@ -1,22 +1,17 @@
-import { deepClone } from "deep-clone-simple";
-// https://github.com/balloob/deep-clone-simple
-
 class BeerbolagetCard extends HTMLElement {
     setConfig(config) {
         if (!config.entity) {
             throw new Error('You need to define an entity');
         }
-        this.config = JSON.parse(JSON.stringify(config));
-        
-        if (!config.header_background_color) this.config.header_background_color = '#008528';
-        if (!config.header_text_color) this.config.header_text_color = '#fcd303';
-        if (!config.beer_name_background_color) this.config.beer_name_background_color = '#008528';
-        if (!config.beer_name_color) this.config.beer_name_color = '#fcd303';
-        if (!config.release_date_color) this.config.release_date_color = '#fcd303';
-        if (!config.available_color) this.config.available_color = '#000000';
-        if (!config.not_available_color) this.config.not_available_color = '#000000';
-        if (!config.user_rating_icon_color) this.config.user_rating_icon_color = '#008528';
-        if (!config.user_rating_text_color) this.config.user_rating_text_color = '#ffffff';
+        if (!config.header_background_color) this.header_background_color = '#008528';
+        if (!config.header_text_color) this.header_text_color = '#fcd303';
+        if (!config.beer_name_background_color) this.beer_name_background_color = '#008528';
+        if (!config.beer_name_color) this.beer_name_color = '#fcd303';
+        if (!config.release_date_color) this.release_date_color = '#fcd303';
+        if (!config.available_color) this.available_color = '#000000';
+        if (!config.not_available_color) this.not_available_color = '#000000';
+        if (!config.user_rating_icon_color) this.user_rating_icon_color = '#008528';
+        if (!config.user_rating_text_color) this.user_rating_text_color = '#ffffff';
     }
 
     set hass(hass) {
@@ -35,8 +30,8 @@ class BeerbolagetCard extends HTMLElement {
                     margin-top: 0px;
                 }
                 .card-header {
-                    background-color: ${this.config.header_background_color};
-                    color: ${this.config.header_text_color};
+                    background-color: ${this.header_background_color};
+                    color: ${this.header_text_color};
                     line-height: 50px;
                     padding: 0px 16px 15px;
                     font-weight: 500;
@@ -87,8 +82,8 @@ class BeerbolagetCard extends HTMLElement {
                 .beer-name {
                     font-weight: 500;
                     font-size: 19px;
-                    background-color: ${this.config.beer_name_background_color};
-                    color: ${this.config.beer_name_color};
+                    background-color: ${this.beer_name_background_color};
+                    color: ${this.beer_name_color};
                 }
                 .brewery {
                     font-size: 15px;
@@ -104,13 +99,13 @@ class BeerbolagetCard extends HTMLElement {
                     margin-bottom: 0px;
                     padding: 0px 0px 15px 8px;
                     font-weight: 500;
-                    color: ${this.config.release_date_color};
+                    color: ${this.release_date_color};
                 }
                 .available {
-                    color: ${this.config.available_color};
+                    color: ${this.available_color};
                 }
                 .not_available {
-                    color: ${this.config.not_available_color};
+                    color: ${this.not_available_color};
                 }
                 .rating-container {
                     position: absolute;
@@ -124,10 +119,10 @@ class BeerbolagetCard extends HTMLElement {
                 .user-rating ha-icon {
                     height: 70px;
                     width: 70px;
-                    color: ${this.config.user_rating_icon_color};
+                    color: ${this.user_rating_icon_color};
                 }
                 .user-rating p {
-                    color: ${this.config.user_rating_text_color};
+                    color: ${this.user_rating_text_color};
                     position: absolute;
                     top: 2px;
                     left: 18px;
