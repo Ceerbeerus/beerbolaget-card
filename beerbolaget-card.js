@@ -1,14 +1,4 @@
 class BeerbolagetCard extends HTMLElement {
-    this.header_background_color;
-    this.header_text_color;
-    this.beer_name_background_color;
-    this.beer_name_color;
-    this.release_date_color;
-    this.available_color;
-    this.not_available_color;
-    this.user_rating_icon_color;
-    this.user_rating_text_color;
-
     setConfig(config) {
         if (!config.entity) {
             throw new Error('You need to define an entity');
