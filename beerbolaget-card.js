@@ -3,7 +3,7 @@ class BeerbolagetCard extends HTMLElement {
         if (!config.entity) {
             throw new Error('You need to define an entity');
         }
-        this.entity = config.entity;
+        this.config = JSON.parse(JSON.stringify(config));
         this.beer_name_background_color = !config.beer_name_background_color ? '#008528' : config.beer_name_background_color;
         this.beer_name_color = !config.beer_name_color ? '#fcd303' : config.beer_name_color;
         this.header_background_color = !config.header_background_color ? '#008528' : config.header_background_color;
@@ -137,7 +137,7 @@ class BeerbolagetCard extends HTMLElement {
             card.appendChild(style);
         }
 
-        const state = hass.states[this.entity];
+        const state = hass.states[this.config.entity];
         if (!state) return;
         
         const json = JSON.parse(state.attributes.beverages);
