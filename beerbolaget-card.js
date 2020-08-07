@@ -119,6 +119,7 @@ class BeerbolagetCard extends HTMLElement {
                     position: relative;
                 }
                 .user-rating ha-icon {
+                    --mdc-icon-size: 70px;
                     height: 70px;
                     width: 70px;
                     color: ${this.user_rating_icon_color};
